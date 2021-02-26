@@ -1,0 +1,17 @@
+{
+  "name": "www-root",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "@popperjs/core": "^2.8.6",
+    "bootstrap": "^5.0.0-beta2",
+    "jquery": "^3.5.1"
+  }
+}

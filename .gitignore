@@ -1,0 +1,3 @@
+*.snap
+.vscode
+__pycache__

@@ -1,0 +1,58 @@
+name: hotshotpy
+base: core20
+summary: Tools for Hotshot Racing.
+description: |
+  Tools for Hotshot Racing.
+adopt-info: hotshotpy
+grade: stable
+confinement: strict
+
+parts:
+  www:
+    plugin: dump
+    source: www-root/
+    organize:
+      "*": www-root/
+
+  hotshotpy:
+    plugin: python
+    source: src/
+    python-packages:
+      - numpy
+      - pillow
+      - setuptools
+      - watchdog
+      - wheel
+    requirements:
+      - ./requirements.txt
+    override-pull: |
+      # do the usual stuff
+      snapcraftctl pull
+      # set the version
+      snapcraftctl set-version "$( python3 -c 'from version import __version__; print(__version__)' )"
+    build-packages:
+      - libleptonica-dev
+      - libtesseract-dev
+      - tesseract-ocr
+    stage-packages:
+      - libarchive13
+      - libgif7
+      - libgomp1
+      - libicu66
+      - libjbig0
+      - libjpeg-turbo8
+      - liblept5
+      - libopenjp2-7
+      - libpng16-16
+      - libtesseract4
+      - libtiff5
+      - libwebp6
+      - libwebpmux3
+      - libxml2      
+
+apps:
+  hotshotpy:
+    command: bin/main.py
+    plugs:
+      - home
+      - network-bind
