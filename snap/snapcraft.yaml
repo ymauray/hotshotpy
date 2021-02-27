@@ -7,6 +7,10 @@ adopt-info: hotshotpy
 grade: stable
 confinement: strict
 
+architectures:
+  - build-on: [amd64]
+    run-on: [amd64]
+
 parts:
   www:
     plugin: dump
