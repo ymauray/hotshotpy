@@ -6,10 +6,11 @@ import os
 import sys
 import time
 
-from database import create_connection, create_tables
+from config import db_file
 from observer import start_observer
 from PIL import Image, ImageOps, ImageDraw
 from tesserocr import PyTessBaseAPI
+from version import __version__
 from web_server import start_web_server
 
 ai = ["ALEXA", "TOSHIRO", "MARCUS", "VIKTOR", "MIKE", "XING", "ASTON", "KEIKO"]
@@ -82,11 +83,8 @@ if __name__ == '__main__':
     # for k, v in sorted(os.environ.items()):
     #    print (f"k:{k}", v)
 
-    conn = create_connection()
-
-    create_tables(conn)
-
-    conn.close()
+    print(f"HotshotPy version {__version__}")
+    print(f"Using SQLite3 database located at {db_file()}")
 
     observer = start_observer(on_modified)
     web_server = start_web_server()
@@ -97,5 +95,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         observer.stop()
         observer.join()
-        conn.close()
     

@@ -8,8 +8,14 @@ def common():
 
     return common
 
+
 def www_root():
     root = os.getenv("SNAP")
     if root is None:
         root = os.path.dirname(os.path.dirname(__file__))
     return f'{root}/www-root'
+
+
+def db_file():
+    db_file = f"{common()}/hotshotpydb/sqlite3.db"
+    return db_file

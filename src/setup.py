@@ -13,6 +13,7 @@ setuptools.setup(
         "config.py",
         "database.py",
         "observer.py",
+        "version.py",
         "web_server.py"
     ],
     packages=[
