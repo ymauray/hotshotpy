@@ -1,6 +1,6 @@
 import setuptools
 
-from version import __version__
+from hotshotpy.version import __version__
 
 setuptools.setup(
     name="hotshotpy",
@@ -10,13 +10,9 @@ setuptools.setup(
     description="A simple tool to help manage Hotshot Racing championships",
     scripts=[
         "main.py",
-        "config.py",
-        "database.py",
-        "observer.py",
-        "version.py",
-        "web_server.py"
     ],
     packages=[
-        'controllers'
+        "controllers",
+        "hotshotpy",
     ]
 )

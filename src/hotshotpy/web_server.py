@@ -1,4 +1,4 @@
-import config
+import hotshotpy
 import json
 import os
 import sys
@@ -12,7 +12,7 @@ from urllib.parse import urlparse, parse_qs
 class HTTPRequestHandler(SimpleHTTPRequestHandler):
 
     def __init__(self, req, client_addr, server):
-        super().__init__(req, client_addr, server, directory=config.www_root())
+        super().__init__(req, client_addr, server, directory=hotshotpy.config.www_root())
 
     def _set_headers(self):
         self.send_response(200)
@@ -72,9 +72,9 @@ class HTTPRequestHandler(SimpleHTTPRequestHandler):
         return None
 
 
-def start_web_server():
-    server = HTTPServer(('localhost', 8765), HTTPRequestHandler)
-    print('Starting server at http://localhost:8765')
+def start_web_server(port):
+    server = HTTPServer(('localhost', port), HTTPRequestHandler)
+    print(f'Starting server at http://localhost:{port}')
     t = threading.Thread(target=lambda s: s.serve_forever(), args=([server]))
     t.daemon = True
     t.start()

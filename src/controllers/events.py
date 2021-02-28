@@ -1,9 +1,10 @@
+import hotshotpy
+
 from threading import current_thread
-from database import create_connection, execute_sql
 
 
 def get(query_string):
-    conn = create_connection()
+    conn = hotshotpy.create_connection()
 
     c = conn.cursor()
 
@@ -43,8 +44,8 @@ def get(query_string):
 
 def set_current(query_string):
     current_event_id = query_string['current'][0]
-    conn = create_connection()
+    conn = hotshotpy.create_connection()
     sql = f"""update params set current_event_id = {current_event_id};"""
-    execute_sql(conn, sql)
+    hotshotpy.execute_sql(conn, sql)
     conn.commit()
     conn.close()

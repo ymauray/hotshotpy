@@ -1,12 +1,16 @@
 import os
 
+user_config = dict()
 
-def common():
+def common(subpath: None):
     common = os.getenv("SNAP_USER_COMMON")
     if common is None:
         common = "/tmp"
 
-    return common
+    if subpath is None:
+        return common
+    else:
+        return f"{common}/{subpath}"
 
 
 def www_root():
@@ -17,5 +21,8 @@ def www_root():
 
 
 def db_file():
-    db_file = f"{common()}/hotshotpydb/sqlite3.db"
-    return db_file
+    return common("hotshotpydb/sqlite3.db")
+
+
+def config_file():
+    return common("hotshotpy.conf")

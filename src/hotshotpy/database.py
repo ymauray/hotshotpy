@@ -1,4 +1,4 @@
-import config
+import hotshotpy
 import sqlite3
 import sys
 
@@ -7,7 +7,7 @@ from sqlite3 import Error
 
 def create_connection():
     """ Create a database connection to a SQLite database """
-    db_file = config.db_file()
+    db_file = hotshotpy.config.db_file()
 
     conn = None
     try:
