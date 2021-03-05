@@ -1,1 +1,2 @@
 import controllers.events
+import controllers.standings

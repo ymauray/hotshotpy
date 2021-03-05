@@ -5,27 +5,17 @@ from threading import current_thread
 
 def get(query_string):
     conn = hotshotpy.create_connection()
-
     c = conn.cursor()
-
     sql = """select current_event_id from params;"""
-
     c.execute(sql)
-
     rows = c.fetchall()
-
     current_event_id = rows[0][0]
-
     c.close()
 
     c = conn.cursor()
-
     sql = """select * from events order by id desc;"""
-
     c.execute(sql)
-
     rows = c.fetchall()
-
     c.close()
 
     events = []
